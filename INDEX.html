@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bank Compare India</title>
+<style>
+:root{--bg:#f3f6f4;--sf:#fff;--tx:#14231c;--mu:#516158;--ln:#cfd9d3;--ac:#0b6e4f;--ac2:#e8f3ee;--wn:#fff4d6;--wt:#6b4e00;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a15;--sf:#17241d;--tx:#e8f0ec;--mu:#9db0a5;--ln:#2c3d34;--ac:#5fd0a2;--ac2:#1c3329;--wn:#3a3012;--wt:#f0d98a}}
+:root[data-theme="dark"]{--bg:#101a15;--sf:#17241d;--tx:#e8f0ec;--mu:#9db0a5;--ln:#2c3d34;--ac:#5fd0a2;--ac2:#1c3329;--wn:#3a3012;--wt:#f0d98a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Segoe UI",Roboto,system-ui,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.25;margin:0 0 .5rem}
+header{background:var(--sf);border-bottom:1px solid var(--ln);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav{max-width:960px;margin:auto;padding:.5rem 1rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+nav b{font:700 1.15rem Georgia,serif;margin-right:auto;color:var(--ac)}
+nav a{padding:.5rem .8rem;border-radius:8px;color:var(--tx);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+nav a[aria-current=page]{background:var(--ac2);color:var(--ac);font-weight:600}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+main{max-width:960px;margin:auto;padding:1.25rem 1rem 3rem}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:1rem;margin:0 0 1rem}
+.note{background:var(--wn);color:var(--wt);border-radius:8px;padding:.7rem .9rem;margin:0 0 1rem;font-size:.93rem}
+.row{display:flex;gap:.75rem;flex-wrap:wrap}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:.25rem}
+select,input[type=search]{width:100%;min-height:44px;padding:.5rem;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.f{flex:1 1 200px}
+button,.btn{min-height:44px;padding:.5rem 1rem;border-radius:8px;border:1px solid var(--ac);background:var(--ac);color:var(--bg);font:600 1rem inherit;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+button.o,.btn.o{background:transparent;color:var(--ac)}
+.cat{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0 1rem}
+.chip{min-height:44px;padding:.4rem .9rem;border-radius:99px;border:1px solid var(--ln);background:var(--sf);color:var(--tx);font:inherit;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:620px;background:var(--sf)}
+th,td{border:1px solid var(--ln);padding:.55rem .7rem;text-align:left;vertical-align:top;font-size:.93rem}
+th{background:var(--ac2)}
+.un{color:var(--mu);font-style:italic}
+.opts{display:grid;gap:.5rem;margin:1rem 0}
+.opts button{justify-content:flex-start;text-align:left;background:var(--sf);color:var(--tx);border-color:var(--ln)}
+.opts button:hover{border-color:var(--ac)}
+progress{width:100%;height:10px;accent-color:var(--ac)}
+.hide{display:none}
+.muted{color:var(--mu);font-size:.9rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.6rem;margin:1rem 0}
+.tile{min-height:72px;flex-direction:column;align-items:flex-start;justify-content:center;background:var(--sf);color:var(--tx);border-color:var(--ln);text-align:left}
+.tile small{color:var(--mu);font-weight:400}
+.lc{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:.8rem 1rem;margin:0 0 .75rem}
+.lh{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;align-items:center}
+.bd{font-size:.8rem;padding:.1rem .6rem;border-radius:99px;background:var(--ac2);color:var(--ac)}
+.lc dl{margin:.5rem 0}.lc dt{font-weight:600;font-size:.85rem;color:var(--mu);margin-top:.4rem}.lc dd{margin:0}
+.ck{display:flex;gap:.5rem;align-items:center;margin:0;cursor:pointer;font-size:1rem}.ck input{width:22px;height:22px}
+@media print{header,.noprint{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><nav aria-label="Main">
+<b>Bank Compare India</b>
+<a href="#home" data-v="home">Start here</a><a href="#compare" data-v="compare">Compare</a><a href="#quiz" data-v="quiz">Quiz</a><a href="#lenders" data-v="lenders">All lenders</a><a href="#docs" data-v="docs">Documents</a><a href="#data" data-v="data">About our data</a>
+</nav></header>
+<main id="main">
+
+<section id="v-home"><h1>Find the right bank or lender</h1><p class="muted">Compare reported rates and fees from RBI-regulated banks and selected NBFCs. Pick what you want to do:</p><div class="tiles" id="tiles"></div><div class="row"><a class="btn" href="#quiz">Not sure? Take the short quiz</a><a class="btn o" href="#lenders">Browse all lenders</a><a class="btn o" href="#docs">Documents checklist</a></div><div class="note" style="margin-top:1rem">Figures are dated snapshots from public comparison sites, not live bank rate cards. Always confirm with the lender.</div></section>
+<section id="v-docs" class="hide"><h1>Documents checklist</h1><div class="card"><label for="dp">Product or service</label><select id="dp"></select></div><div id="dout"></div><button class="o noprint" id="dprint">Print checklist</button></section>
+<section id="v-lenders" class="hide"><h1>All lenders we list</h1><div id="lenlist"></div></section>
+<section id="v-compare">
+<h1>Compare banking products</h1>
+<p class="muted">Pick a category and product, then see public-sector and private-sector banks side by side.</p>
+<div class="note" role="note"><strong>Data status:</strong> Rates, fees and limits for savings, fixed and recurring deposits, home, personal, gold, education and car loans, UPI and sample credit cards are a snapshot taken on 29 Oct 2026 from public comparison sites. Vehicle loan figures are for new cars only. Credit-card fees are for example cards, not every card a bank offers. They are not live and may already have changed. Everything else is “Not verified”. We never estimate rates, fees or terms. Check the bank’s official page for current terms.</div>
+<div class="card">
+<label for="q">Search products</label>
+<input type="search" id="q" placeholder="e.g. savings, home loan, UPI">
+<div class="cat" id="cats" role="group" aria-label="Categories"></div>
+<div class="row">
+<div class="f"><label for="prod">Product or service</label><select id="prod"></select></div>
+<div class="f"><label for="bt">Lender type</label><select id="bt"><option value="all">All lenders</option><option value="PSU">Public sector banks</option><option value="Pvt">Private sector banks</option><option value="SFB">Small finance banks</option><option value="NBFC">NBFCs</option></select></div>
+<div class="f"><label for="so">Sort by</label><select id="so"><option value="rate">Best reported rate first</option><option value="name">Name (A–Z)</option></select></div>
+<div class="f"><label for="sa">Include lenders with no data</label><input type="checkbox" id="sa" style="width:24px;height:24px"></div>
+<div class="f"><label for="loc">Location / availability</label><select id="loc"><option>Anywhere in India</option><option>Urban</option><option>Semi-urban</option><option>Rural</option></select></div>
+<div class="f"><label for="el">Who is it for?</label><select id="el"><option>Any customer</option><option>Salaried</option><option>Self-employed / business</option><option>Farmer</option><option>Senior citizen</option><option>NRI</option><option>Minor</option></select></div>
+</div>
+<p class="muted">Location and eligibility filters will narrow results once verified bank-level data is added. For now they are recorded in the saved or shared comparison.</p>
+</div>
+<div id="out"></div><div id="cmp"></div>
+<div class="row noprint" id="acts">
+<button id="save" class="o">Save comparison</button><button id="print" class="o">Print</button><button id="share" class="o">Share</button><span id="msg" class="muted" role="status"></span>
+</div>
+</section>
+
+<section id="v-quiz" class="hide">
+<h1>Find what suits me</h1>
+<p class="muted">Optional. One question at a time. Choose “I’m not sure” whenever you like. We never ask for account numbers, PINs, passwords, OTPs or card details.</p>
+<div class="card" id="qbox"></div>
+</section>
+
+<section id="v-data" class="hide">
+<h1>About our data</h1>
+<div class="card"><h2>Sources</h2><p>Information should come only from banks’ official product pages, fee schedules, RBI notices and similar public documents. Each record should show its source link and the date we last checked it.</p></div>
+<div class="card"><h2>Current status</h2><p>Rates, fees and limits for savings, fixed and recurring deposits, home, personal, gold, education and car loans, UPI and sample credit cards were gathered on 29 Oct 2026 from free public sources such as Zee Business, Business Today, Paisabazaar, BankerMart, 5paisa, ClearTax and The Financial Economy. Some source pages are older than the snapshot date, and the “Last checked” row says which. They are third-party summaries, not the banks’ own rate cards, and sources sometimes disagree (home loans most of all), so we show ranges. This page cannot pull live feeds, so it shows a dated snapshot. Every other product still reads “Not verified”. Bank websites remain the final word.</p></div>
+<div class="card"><h2>Which lenders are covered</h2><p>We list all 12 public sector banks, all 21 private sector banks and 11 small finance banks from RBI’s list of scheduled commercial banks, plus selected NBFCs and housing finance companies. Foreign banks, regional rural banks and co-operative banks are not listed individually; see RBI’s list from the All lenders page. Most lenders have no verified figures yet and show “Not verified”.</p></div>
+<div class="card"><h2>How comparison works</h2><p>Every product uses the same rows so banks line up. Missing data stays blank and is labelled. Banks are listed alphabetically, never ranked by commission.</p></div>
+<div class="card"><h2>How we handle your answers</h2><p>Quiz answers stay in this browser page while you use it. We do not send them anywhere, and you can review or clear them at any time. Saved comparisons are stored only in your own browser, if storage is available.</p></div>
+<div class="card"><h2>Advertising and referrals</h2><p>No referral or advertising relationships are active. If any are added, they will be disclosed on the relevant page. Paid placement will not change quiz suitability results.</p></div>
+<div class="card"><h2>Documents lists</h2><p>The basic KYC list (one officially valid document plus PAN or Form 60) follows RBI’s KYC rules and FAQ. Extra documents for each product are typical requests, not rules. Every lender can ask for more or less, so check with them before you go.</p></div>
+<div class="card"><h2>Not advice</h2><p>Results are general information, not personal financial advice and not a promise of approval. Always confirm current terms with the bank.</p></div>
+</section>
+</main>
+<script>
+var CATS={
+"Accounts and deposits":["Savings account","Salary account","Current account","Fixed deposit","Recurring deposit","NRI account","Minor account","Senior-citizen account","Basic banking account"],
+"Loans and credit":["Home loan","Personal loan","Vehicle loan","Education loan","Gold loan","Loan against property","Loan against deposits or securities","Business / MSME loan","Agricultural loan","Credit card","Overdraft"],
+"Payments and transfers":["UPI","QR payments","NEFT","RTGS","IMPS","Debit card","Prepaid card","Bill payments","Standing instructions","Cheques","Demand drafts","Merchant payment services"],
+"Digital and everyday banking":["Internet and mobile banking","ATMs","Cash-deposit machines","Alerts and statements","Digital account opening","Card controls","Passbook","Cheque book","Aadhaar-enabled services","Doorstep banking"],
+"Investment, savings and protection":["Mutual funds","Government securities and bonds","Demat and trading","NPS and pension","Bank-distributed insurance","Lockers","Tax payments"],
+"Business and institutional":["Business accounts","Cash management","Collections","Trade finance","Foreign exchange","Remittances","Payroll","Bulk payments","Equipment and project finance","Treasury services"]};
+var BANKS=[["Axis Bank","Pvt","https://www.axisbank.com"],["Bank of Baroda","PSU","https://www.bankofbaroda.in"],["Canara Bank","PSU","https://canarabank.com"],["HDFC Bank","Pvt","https://www.hdfcbank.com"],["ICICI Bank","Pvt","https://www.icicibank.com"],["IndusInd Bank","Pvt","https://www.indusind.com"],["Kotak Mahindra Bank","Pvt","https://www.kotak.com"],["Punjab National Bank","PSU","https://www.pnbindia.in"],["State Bank of India","PSU","https://sbi.co.in"],["Union Bank of India","PSU","https://www.unionbankofindia.co.in"],
+["Bank of India","PSU","https://www.bankofindia.co.in"],["Bank of Maharashtra","PSU","https://bankofmaharashtra.in"],["Central Bank of India","PSU","https://www.centralbankofindia.co.in"],["Indian Bank","PSU","https://www.indianbank.in"],["Indian Overseas Bank","PSU","https://www.iob.in"],["Punjab & Sind Bank","PSU","https://punjabandsindbank.co.in"],["UCO Bank","PSU","https://www.ucobank.com"],
+["Bandhan Bank","Pvt","https://bandhanbank.com"],["CSB Bank","Pvt","https://www.csb.co.in"],["City Union Bank","Pvt","https://www.cityunionbank.com"],["DCB Bank","Pvt","https://www.dcbbank.com"],["Dhanlaxmi Bank","Pvt","https://www.dhanbank.com"],["Federal Bank","Pvt","https://www.federalbank.com"],["IDFC FIRST Bank","Pvt","https://www.idfcfirstbank.com"],["IDBI Bank","Pvt","https://www.idbibank.in"],["Jammu & Kashmir Bank","Pvt","https://www.jkbank.com"],["Karnataka Bank","Pvt","https://karnatakabank.com"],["Karur Vysya Bank","Pvt","https://www.kvb.co.in"],["Nainital Bank","Pvt","https://www.nainitalbank.co.in"],["RBL Bank","Pvt","https://www.rblbank.com"],["South Indian Bank","Pvt","https://www.southindianbank.com"],["Tamilnad Mercantile Bank","Pvt","https://www.tmb.in"],["Yes Bank","Pvt","https://www.yesbank.in"],
+["AU Small Finance Bank","SFB","https://www.aubank.in"],["Capital Small Finance Bank","SFB","https://www.capitalbank.co.in"],["Equitas Small Finance Bank","SFB","https://www.equitasbank.com"],["ESAF Small Finance Bank","SFB","https://www.esafbank.com"],["Suryoday Small Finance Bank","SFB","https://www.suryodaybank.com"],["Ujjivan Small Finance Bank","SFB","https://www.ujjivansfb.in"],["Utkarsh Small Finance Bank","SFB","https://www.utkarsh.bank"],["slice Small Finance Bank","SFB","https://www.rbi.org.in/scripts/bs_viewcontent.aspx?Id=3657"],["Jana Small Finance Bank","SFB","https://www.janabank.com"],["Shivalik Small Finance Bank","SFB","https://www.shivalikbank.com"],["Unity Small Finance Bank","SFB","https://www.theunitybank.com"],
+["Bajaj Finance","NBFC","https://www.bajajfinserv.in"],["Bajaj Housing Finance","NBFC","https://www.bajajhousingfinance.in"],["LIC Housing Finance","NBFC","https://www.lichousing.com"],["PNB Housing Finance","NBFC","https://www.pnbhousing.com"],["Shriram Finance","NBFC","https://www.shriramfinance.in"],["Muthoot Finance","NBFC","https://www.muthootfinance.com"],["Manappuram Finance","NBFC","https://www.manappuram.com"],["Tata Capital","NBFC","https://www.tatacapital.com"],["Mahindra Finance","NBFC","https://www.mahindrafinance.com"]];
+var ROWS=["Interest rate (fixed / variable)","Fees, minimum balance, penalties","Eligibility and documents","Amount, tenure, repayment, processing time","Deposit term and premature withdrawal","Card benefits, limits, annual fee","Branch, ATM, digital and support access","Key terms and exclusions","Last checked"];
+var AGG="Aggregator-reported, 29 Oct 2026 snapshot";
+function fd(g,s){return {0:"Fixed. Up to "+g+"% p.a. (general), up to "+s+"% (senior citizens); varies by tenure",8:AGG}}
+var DATA={
+"Fixed deposit":{"State Bank of India":fd("6.45","7.05"),"HDFC Bank":fd("6.50","7.10"),"ICICI Bank":fd("6.50","7.10"),"Axis Bank":fd("6.50","7.25"),"Bank of Baroda":fd("6.75","7.25"),"Canara Bank":fd("6.60","7.10"),"Union Bank of India":fd("6.55","7.05"),"Punjab National Bank":fd("6.60","7.10"),"Kotak Mahindra Bank":fd("6.65","7.15"),"IndusInd Bank":fd("7.00","7.75")},
+"Home loan":{
+"State Bank of India":{0:"Floating. From about 7.25%; sources show up to 8.95%",8:AGG},
+"HDFC Bank":{0:"Floating. Sources differ: starting 7.15%–8.15%",8:AGG},
+"ICICI Bank":{0:"Floating. Sources differ: from 7.45% to 8.75%",1:"Processing fee up to 2% (reported)",8:AGG},
+"Axis Bank":{0:"Floating. Sources differ: from 7.50% to 8.00%",1:"Processing fee up to 2% (reported)",3:"Up to 30 years, up to ₹5 crore (reported)",8:AGG},
+"Bank of Baroda":{0:"Floating. From about 7.20%",8:AGG},
+"Canara Bank":{0:"Floating. From about 7.15%; up to 10%",1:"Processing fee 0.25% (reported)",3:"Up to 30 years, up to 90% of property value (reported)",8:AGG},
+"Union Bank of India":{0:"Floating. From about 7.15%",1:"Processing fee 0.50%, max ₹15,000 (reported)",3:"Up to 30 years, up to ₹5 crore (reported)",8:AGG},
+"Punjab National Bank":{0:"Floating. From about 7.45%–7.50%",1:"Processing fee 0.35% (reported)",8:AGG},
+"Kotak Mahindra Bank":{0:"Floating. From about 7.60%",1:"Processing fee 0.50%, up to 2% (reported)",3:"Up to 30 years (reported)",8:AGG}},
+"Savings account":{
+"State Bank of India":{0:"Variable. 2.50% on all balances (from 15 Jun 2025)",1:"Minimum balance requirement reported as waived",8:"Business Today, 10 Sep 2026"},
+"Canara Bank":{0:"Variable. 2.50% up to ₹50 lakh (from 5 Sep 2026)",8:"Business Today, 10 Sep 2026"},
+"Punjab National Bank":{0:"Variable. 2.50% up to ₹100 crore (from 1 Oct 2025)",1:"Minimum balance reported ₹500 (rural) to ₹5,000 (metro); check bank",8:"Business Today, 10 Sep 2026"},
+"Bank of Baroda":{0:"Variable. 2.50% on ₹1 lakh to under ₹50 crore",8:"Business Today, 10 Sep 2026"},
+"Union Bank of India":{0:"Variable. 2.50% up to ₹50 lakh (from 10 Aug 2026)",8:"Business Today, 10 Sep 2026"},
+"HDFC Bank":{0:"Variable. Reported 2.50% (Apr 2026); other sources differ",1:"Penalty up to ₹600 + GST per month (reported)",8:"Aggregator, Apr 2026"},
+"ICICI Bank":{0:"Variable. Reported 2.50% on all balances (Apr 2026)",1:"About ₹10,000 monthly average in metro/urban (reported); penalty up to ₹500 + GST",8:"Aggregator, Apr 2026"},
+"Axis Bank":{0:"Variable. 2.50%–3.50% by balance; sources differ",1:"About ₹10,000 monthly average in metro/urban (reported)",8:"Aggregator, Apr 2026"},
+"Kotak Mahindra Bank":{0:"Variable. Reported 2.50% (Apr 2026)",1:"Regular ₹10,000; Kotak 811 zero balance (reported)",8:"Aggregator, Apr 2026"},
+"IndusInd Bank":{0:"Variable. 2.50% up to ₹1 lakh; 3.00% on ₹1–10 lakh",8:"Aggregator (ClearTax)"}}};
+var SRC={"Fixed deposit":[["Zee Business, Oct 2026","https://www.zeebiz.com/personal-finance/news-fd-rates-in-october-2026-sbi-hdfc-bank-icici-bank-pnb-axis-bank-bank-of-baroda-compared-check-latest-interest-rates-403563"],["Paisabazaar FD rates","https://www.paisabazaar.com/fixed-deposit/"],["Paisabazaar senior citizen FD","https://www.paisabazaar.com/fixed-deposit/senior-citizen-fixed-deposit/"]],"Home loan":[["BankerMart home loan rates","https://bankermart.com/home-loan-interest-rate-all-bank/"],["Paisabazaar home loan rates","https://www.paisabazaar.com/home-loan/interest-rates/"]],"Savings account":[["Business Today, Sep 2026","https://www.businesstoday.in/personal-finance/story/have-rs-50-lakh-in-savings-check-canara-banks-new-interest-rate-and-what-sbi-pnb-bob-offer-554214-2026-09-10"],["5paisa savings comparison","https://www.5paisa.com/finschool/web-stories/tips-for-choosing-a-bank-to-open-a-savings-account/"],["ClearTax IndusInd","https://cleartax.in/s/indusind-bank-savings-account"]]};
+DATA["Personal loan"]={
+"State Bank of India":{0:"Fixed/variable varies. From about 10.00%; up to 15%",1:"Up to 1.5%–2% + GST (sources differ)",8:AGG},
+"HDFC Bank":{0:"Fixed. 9.99%–24.00%",1:"Up to ₹6,500 + GST (reported)",8:AGG},
+"ICICI Bank":{0:"Fixed. From 9.99%; up to about 16.5%",1:"Up to 2%–2.5% (sources differ)",8:AGG},
+"Axis Bank":{0:"From 9.99% (some sources 8.75%–10.49%); up to 22%",1:"Up to 2% + GST",3:"Up to ₹40 lakh (reported)",8:AGG},
+"Kotak Mahindra Bank":{0:"From 10.99%",1:"Up to 5% (highest cap reported)",8:AGG},
+"IndusInd Bank":{0:"From 10.49%",1:"Up to 3.5%; a 2% offer reported for a limited time",3:"Up to ₹50 lakh (reported)",8:AGG},
+"Bank of Baroda":{0:"Floating and fixed. From about 10.15%–10.65%; up to 18.25%",1:"2%, minimum ₹1,000 (reported)",8:AGG},
+"Canara Bank":{0:"From about 9.70%–10.45%",1:"Reported 0.50%–1% + GST",8:AGG},
+"Punjab National Bank":{0:"Floating and fixed. From about 10.50%; up to 17.05%",1:"Up to 1%",8:AGG},
+"Union Bank of India":{0:"From 9.15% (government-employee scheme); other schemes higher",1:"Nil for government-employee scheme; ₹5,900 for Union Personal (reported)",8:AGG}};
+DATA["Gold loan"]={
+"State Bank of India":{0:"From about 8.75%; sources range 8.00%–9.95%",1:"Up to 0.5%, max ₹10,000 + GST (reported)",3:"Up to 36 months; loan up to 75% of gold value (reported)",8:"Sources dated Jun–Oct 2026"},
+"Bank of Baroda":{0:"From about 9.00%–9.15%; one source 8.85%",3:"Up to 36 months; up to 75% of gold value (reported)",8:"Sources dated Jun–Oct 2026"},
+"Canara Bank":{0:"8.75%–9.25%",1:"0.50% + GST",3:"Up to 12 months; up to ₹35 lakh (reported)",8:"Source dated Oct 2026"},
+"Punjab National Bank":{0:"8.55%–9.25%",1:"0.70% + GST",3:"6–12 months; ₹10,000–₹25 lakh (reported)",8:"Source dated Oct 2026"},
+"Union Bank of India":{0:"About 8.65% (older source)",8:"Older source"},
+"HDFC Bank":{0:"9.30%–16.00%",1:"Up to 1% + GST",3:"6–48 months; up to ₹1 crore (reported)",8:"Source dated Oct 2026"},
+"ICICI Bank":{0:"9.15%–16.75%",1:"Up to 1% + GST",3:"6–12 months; ₹50,000–₹2 crore (reported)",8:"Source dated Oct 2026"},
+"Axis Bank":{0:"9.75%–16.95%; some sources up to 19%",1:"0.50%–1% + GST",3:"6–36 months; ₹25,001–₹20 lakh (reported)",8:"Source dated Oct 2026"},
+"Kotak Mahindra Bank":{0:"From about 9%; up to 18%–24%, sources differ",1:"Up to 2% + GST",8:"Sources dated 2026"},
+"IndusInd Bank":{0:"From about 10.06%",8:"Source dated 2026"}};
+DATA["Credit card"]={
+"HDFC Bank":{0:"Finance charge 3.75% a month (45% a year) on Regalia Gold",1:"Regalia Gold ₹2,500 + GST, waived on ₹4 lakh yearly spend; Millennia ₹1,000. Cash withdrawal 2.5% (min ₹500)",5:"Regalia Gold: 1.25% reward on everyday spends; lounge access (reported)",8:"Paisabazaar, 28 Oct 2026"},
+"ICICI Bank":{1:"Amazon Pay card: no joining or annual fee (reported)",8:"Source dated Oct 2026"},
+"Axis Bank":{1:"Magnus: ₹12,500 + GST (reported)",5:"Magnus: 12 EDGE Miles per ₹200; unlimited domestic lounges (reported)",8:"Source dated 2026"},
+"State Bank of India":{1:"SBI Card ELITE: ₹4,999 + GST (reported). Cards are issued by SBI Card, a subsidiary",8:"Source dated 2026"},
+"Kotak Mahindra Bank":{1:"PVR Platinum: ₹2,500 + GST (reported)",8:"Source dated 2026"}};
+SRC["Personal loan"]=[["The Financial Economy, Oct 2026","https://www.thefinancialeconomy.com/personal-loan-interest-rates/"],["BankBazaar personal loans","https://www.bankbazaar.com/personal-loan.html"],["RupeeQ bank comparison","https://rupeeq.com/blog/best-banks-for-personal-loans-in-india/"]];
+SRC["Gold loan"]=[["Finseich gold loan rates","https://www.finseich.com/blog/gold-loan-interest-rates-india-2026"],["MyMoneyMantra comparison","https://www.mymoneymantra.com/bank-of-india-gold-loan-interest-rates"],["IPOMarket comparison","https://www.ipomarket.in/news/gold-loan-interest-rates-comparison-india"]];
+SRC["Credit card"]=[["Paisabazaar HDFC Regalia Gold","https://www.paisabazaar.com/hdfc-bank/hdfc-regalia-gold-credit-card/"],["Top credit cards 2026","https://pipefitter.in/top-credit-cards-in-india-2026/"],["InvestingPro premium cards","https://www.investingpro.in/articles/best-premium-credit-card-india-2026"]];
+DATA["Education loan"]={
+"State Bank of India":{0:"Floating. Student loan about 8.15%–10.45%; Scholar scheme for premier institutes from about 8.05% (sources differ)",2:"Collateral reported above ₹7.5 lakh",3:"Up to ₹1.5 crore for study abroad (reported)",8:AGG},
+"Bank of Baroda":{0:"8.85%–10.50%; Baroda Scholar from about 8.40% (reported)",2:"Collateral reported above ₹4 lakh",3:"Up to ₹1.5 crore (reported)",8:AGG},
+"Canara Bank":{0:"8.60%–10.25%",2:"Collateral reported above ₹7.5 lakh",3:"Up to ₹1 crore (reported)",8:AGG},
+"Union Bank of India":{0:"9.30%–11.40% (another source 8.10%–9.75%)",3:"Up to ₹1.5 crore (reported)",8:AGG},
+"Punjab National Bank":{0:"8.80%–10.95%; Udaan scheme for listed universities from about 8.35%",2:"Collateral reported above ₹7.5 lakh",8:AGG},
+"HDFC Bank":{0:"Reported 9.50%–13.00%. HDFC Credila is a separate NBFC at 9.70%–13.00%",8:AGG},
+"ICICI Bank":{0:"9.85%–12.50%; study abroad from 10.25%",3:"Up to ₹2 crore secured (reported)",8:AGG},
+"Axis Bank":{0:"10.10%–12.75% (sources differ)",3:"Up to ₹1.5 crore (reported)",8:AGG},
+"Kotak Mahindra Bank":{0:"From about 9.98% (older source)",3:"Up to ₹20 lakh (older source)",8:"Older source"}};
+DATA["Vehicle loan"]={
+"State Bank of India":{0:"New car. From about 8.65%–8.80%; some sources 9.20%+",1:"Reported nil to ₹1,500 + GST",3:"Up to 7 years",8:AGG},
+"HDFC Bank":{0:"New car. From about 8.15%–9.40% (sources differ)",1:"Up to 1%, ₹3,500–₹9,000 (reported)",3:"Up to 7 years",8:AGG},
+"ICICI Bank":{0:"New car. From about 8.35%–8.40%",1:"Up to ₹8,500 (reported)",8:AGG},
+"Axis Bank":{0:"New car. From about 8.75%–8.95%; some sources up to 13.80%",1:"₹3,500–₹12,000 (reported)",8:AGG},
+"Bank of Baroda":{0:"New car. Floating from about 7.60%–8.15%; fixed from 8.50%–8.60%",1:"Up to ₹750 + GST (reported)",3:"Up to 7 years",8:AGG},
+"Canara Bank":{0:"New car. From about 7.45%–7.70% (7.45% for electric cars)",1:"0.25%, min ₹1,000, max ₹5,000 (reported)",8:AGG},
+"Union Bank of India":{0:"New car. From about 7.50%–7.80%",1:"Up to ₹1,000 (older source)",8:AGG},
+"Punjab National Bank":{0:"New car. Floating from 7.60%; fixed from 8.60%",1:"Reported capped near ₹1,500",8:AGG},
+"Kotak Mahindra Bank":{0:"New car. 8.25%–13.00% (older source)",8:"Older source"},
+"IndusInd Bank":{0:"Fixed. 9.50%–18.00% (older source)",3:"Up to 7 years (reported)",8:"Older source"}};
+function rd(g,s){return {0:"Fixed, compounded quarterly. "+g+"% p.a. general, "+s+"% senior, by tenure (sources differ)",8:"Scripbox, 23 Oct 2026"}}
+DATA["Recurring deposit"]={"State Bank of India":rd("4.50–7.00","5.00–7.50"),"HDFC Bank":rd("4.50–7.10","5.00–7.60"),"ICICI Bank":rd("4.75–7.00","5.25–7.50"),"Axis Bank":rd("4.75–7.10","4.75–7.85"),"Kotak Mahindra Bank":rd("4.00–7.10","4.50–7.60"),"IndusInd Bank":rd("4.75–7.50","5.50–8.25"),"Punjab National Bank":rd("4.40–6.50","4.90–7.30"),"Canara Bank":rd("5.25–6.90","5.25–7.40"),"Union Bank of India":rd("4.30–6.70","4.80–7.20"),"Bank of Baroda":{0:"Fixed. Up to about 7.05% general, 7.55% senior (one source); full range not verified",8:"Scripbox"}};
+DATA.UPI={
+"State Bank of India":{3:"₹1 lakh a day (most sources); some list 10 payments a day"},
+"HDFC Bank":{3:"₹1 lakh a day, 20 payments a day",7:"₹5,000 limit in the first 24 hours after new UPI activation (reported)"},
+"ICICI Bank":{3:"₹1 lakh a day, 20 payments a day (one source says 10)"},
+"Axis Bank":{3:"₹1 lakh a day, 20 payments a day",7:"₹5,000 in the first 24 hours with a new UPI PIN (reported)"},
+"Kotak Mahindra Bank":{3:"₹1 lakh a day, 20 payments a day"},
+"IndusInd Bank":{3:"₹1 lakh a day; ₹2 lakh for eligible customers (one source)"},
+"Bank of Baroda":{3:"Sources differ: ₹25,000 to ₹1 lakh a day"},
+"Canara Bank":{3:"₹1 lakh a day, 20 payments a day"},
+"Union Bank of India":{3:"₹2 lakh a day in several sources; others say ₹1 lakh"},
+"Punjab National Bank":{3:"Sources differ: ₹25,000 to ₹1 lakh a day; most say ₹50,000"}};
+for(var ub in DATA.UPI){var u=DATA.UPI[ub];u[7]=(u[7]?u[7]+". ":"")+"Standard limit ₹1 lakh per payment; up to ₹5 lakh for categories such as tax, insurance and capital markets (reported)";u[8]="Sources dated 2026; limits vary by customer"}
+SRC["Education loan"]=[["FundMyCampus, Oct 2026","https://www.fundmycampus.com/education-loan-interest-rates"],["SuperTutor comparison","https://supertutor.in/resources/finance/education-loan-interest-rates/"],["UrbanMoney comparison","https://www.urbanmoney.com/education-loan/education-loan-interest-rates"]];
+SRC["Vehicle loan"]=[["BankBazaar car loan rates","https://www.bankbazaar.com/car-loan-interest-rate.html"],["Zee Business car loans, Oct 2026","https://www.zeebiz.com/personal-finance/news-car-loan-interest-rates-october-2026-bank-of-baroda-canara-bank-hdfc-bank-emi-on-a-rs-5-lakh-loan-and-processing-fees-404454"],["Deal4Loans car loans","https://www.deal4loans.com/car-loan-interest-rate.php"]];
+SRC["Recurring deposit"]=[["Scripbox RD rates","https://scripbox.com/recurring-deposit/rd-interest-rates"],["Scripbox bank comparison","https://scripbox.com/recurring-deposit"],["Business Today RD rates","https://www.businesstoday.in/personal-finance/story/recurring-deposits-interest-rates-2026-sbi-icici-bank-pnb-post-office-rates-compared-550204-2026-08-20"]];
+SRC.UPI=[["Bankzop UPI limits","https://bankzop.com/upi-transaction-limits/"],["Oxigen UPI limits","https://www.oxigenwallet.com/upi/maximum-upi-limit/"],["Razorpay UPI limits","https://razorpay.com/blog/upi-transaction-limit-per-day/"]];
+function A(p,n,o){DATA[p]=DATA[p]||{};o[8]=o[8]||"Aggregator, 2026 or older";DATA[p][n]=o}
+var NB="NBFC deposits are not covered by DICGC insurance like bank deposits; check the credit rating";
+A("Fixed deposit","Bajaj Finance",{0:"Fixed. About 6.60% (1 year) to 7.40% (3–5 years); an older source shows a higher figure. Seniors get more",1:"Minimum deposit about ₹15,000 (older source)",7:NB});
+A("Fixed deposit","Shriram Finance",{0:"Fixed. About 6.85%–7.00% (1 year) to 7.50%–7.60% (3–5 years); seniors up to about 8.10%",1:"Minimum deposit ₹5,000 (reported)",7:NB});
+A("Fixed deposit","LIC Housing Finance",{0:"Fixed. About 6.70% (1 year) to 7.35% (5 years); seniors get more",7:NB});
+A("Fixed deposit","PNB Housing Finance",{0:"Fixed. About 6.60% (1 year) to 6.90% (3–5 years); seniors about 0.25% more",7:NB});
+A("Fixed deposit","Mahindra Finance",{0:"Fixed. About 6.75% (1 year); seniors about 7.00%",7:NB});
+A("Home loan","LIC Housing Finance",{0:"Floating. 7.15%–8.20%",1:"Processing fee up to ₹50,000 (reported)",3:"Up to ₹15 crore, up to 30 years (reported)"});
+A("Home loan","Bajaj Housing Finance",{0:"Floating. From about 7.25%–7.45%; some profiles up to 20%",1:"Up to 2% (reported)",3:"Up to ₹15 crore, up to 32 years (reported)"});
+A("Home loan","PNB Housing Finance",{0:"Floating. 7.75%–9.95%"});
+A("Home loan","Tata Capital",{0:"Floating. From about 8.00%",1:"Up to 3% (reported)",3:"Up to ₹7.5 crore, up to 30 years (reported)"});
+A("Home loan","Bank of India",{0:"Floating. From about 7.10%–7.35%"});
+A("Home loan","Central Bank of India",{0:"Floating. From about 7.10%"});
+A("Home loan","Bank of Maharashtra",{0:"Floating. From about 7.10%"});
+A("Home loan","Federal Bank",{0:"Floating. From about 7.40%"});
+A("Home loan","IDBI Bank",{0:"Floating. From about 7.75%"});
+A("Gold loan","Muthoot Finance",{0:"From 9% if interest is paid monthly; higher otherwise (sources differ)",3:"Loan up to 75%–85% of gold value (sources differ)"});
+A("Gold loan","Manappuram Finance",{0:"9.90%–24% by scheme and how often interest is paid",1:"₹30 incl. tax at settlement (reported); no foreclosure fee",3:"₹10,000 to ₹5 crore (reported)"});
+A("Gold loan","Bank of India",{0:"About 8.35%–9.05%; one source 7.80%–8.95%"});
+A("Gold loan","Indian Bank",{0:"8.50%–8.80%",1:"No processing fee (reported)"});
+A("Education loan","UCO Bank",{0:"From about 8.70%"});A("Education loan","Karnataka Bank",{0:"From about 9.26%"});A("Education loan","Jammu & Kashmir Bank",{0:"From about 9.20%"});A("Education loan","Federal Bank",{0:"From about 11.25% (older source)"});
+A("Vehicle loan","Bank of Maharashtra",{0:"New car. From about 7.70%"});A("Vehicle loan","UCO Bank",{0:"New car. From about 7.60% (older source)"});A("Vehicle loan","Indian Overseas Bank",{0:"New car. 7.80%–12.00% (older source)",1:"0.50%, ₹500–₹5,000 (older source)"});A("Vehicle loan","Federal Bank",{0:"New car. From about 7.60% (one source)"});
+A("Savings account","Bank of India",{0:"Variable. 2.75%–3.10% (older source)"});A("Savings account","Bank of Maharashtra",{0:"Variable. 2.75% (older source)"});A("Savings account","Central Bank of India",{0:"Variable. 2.80%–4.50% (older source)"});A("Savings account","UCO Bank",{0:"Variable. 2.50% for balances ₹10 lakh and above (from 23 Jun 2025)"});A("Savings account","Yes Bank",{0:"Variable. 3.00%–7.00% by balance; sources differ"});A("Savings account","AU Small Finance Bank",{0:"Variable. 3.00%–7.25% by balance (undated source)"});A("Savings account","Bandhan Bank",{0:"Variable. 3.00%–8.00% by balance (undated source)"});A("Savings account","Utkarsh Small Finance Bank",{0:"Variable. 4.00%–7.75% by balance (undated source)"});
+SRC["Fixed deposit"].push(["BankBazaar NBFC FD rates","https://www.bankbazaar.com/fixed-deposit/nbfc-fd-rates.html"]);
+SRC["Home loan"].push(["UrbanMoney LIC HFL, Oct 2026","https://www.urbanmoney.com/home-loan/lic-housing-finance/interest-rate"],["NoBroker NBFC home loans","https://www.nobroker.in/home-loan/nbfc-home-loan/"]);
+SRC["Gold loan"].push(["FundsTiger NBFC gold loans, Oct 2026","https://www.fundstiger.in/compare/gold-loan-interest-rates/"],["RatesToday gold loans","https://ratestoday.in/gold-loan-interest-rate/"]);
+A("Fixed deposit","Bank of India",fd("6.85","7.45"));A("Fixed deposit","Punjab & Sind Bank",fd("6.85","7.35"));A("Fixed deposit","Indian Bank",{0:"Fixed. Up to 6.80% p.a. (general); senior rate not verified"});A("Fixed deposit","Indian Overseas Bank",{0:"Fixed. Up to 6.60% p.a. (general); senior rate not verified"});A("Fixed deposit","Central Bank of India",{0:"Fixed. Up to 6.75% p.a. (general); senior rate not verified"});A("Fixed deposit","UCO Bank",{0:"Fixed. Up to 6.45%–6.60% p.a. (general; sources differ)"});
+A("Fixed deposit","Suryoday Small Finance Bank",fd("8.25","8.50"));A("Fixed deposit","Utkarsh Small Finance Bank",fd("8.10","8.25"));A("Fixed deposit","Ujjivan Small Finance Bank",{0:"Fixed. Up to 7.80%–8.10% p.a. general (sources differ); seniors up to 8.30%"});A("Fixed deposit","Equitas Small Finance Bank",fd("8.00","8.50"));A("Fixed deposit","Jana Small Finance Bank",fd("8.00","8.30"));A("Fixed deposit","ESAF Small Finance Bank",fd("8.00","8.50"));A("Fixed deposit","Shivalik Small Finance Bank",{0:"Fixed. Up to 8.00% p.a. (general); senior rate not verified"});A("Fixed deposit","AU Small Finance Bank",fd("7.40","7.90"));A("Fixed deposit","Unity Small Finance Bank",{0:"Fixed. Up to 7.50%–8.00% p.a. general (sources differ); seniors up to 8.50%"});
+SRC["Fixed deposit"].push(["Paisabazaar best FD rates","https://www.paisabazaar.com/fixed-deposit/best-fd-rates/"],["Business Today SFB vs PSU FD rates","https://www.businesstoday.in/personal-finance/story/small-finance-banks-vs-private-banks-vs-psu-banks-the-october-2026-senior-fd-rate-gap-ahead-of-rbi-rate-meet-559405-2026-10-06"]);
+var K=["ID and address: one officially valid document (passport, driving licence, Aadhaar proof, voter ID, NREGA job card or NPR letter)","PAN, or Form 60 if you have no PAN","Recent passport-size photo","Active mobile number (and email if asked)"];
+function X(a){return K.concat(a)}
+var INC=["Salary slips (last 3 months) or ITR for self-employed","Bank statements (last 3–6 months)","Employment or business proof"];
+var BUS=["Business registration proof (GST, Udyam or shop and establishment certificate)","Business address proof","Owners’ or directors’ KYC; for companies and firms, incorporation or partnership documents and authority resolution"];
+var ACC=["A bank account in your name","Mobile number registered with that account"];
+var DOCS={
+"Savings account":X(["Nominee details","Opening deposit, if the account type needs one"]),
+"Salary account":X(["Employer letter or offer letter","Employee ID or recent salary slip"]),
+"Current account":X(BUS.concat(["Opening deposit and minimum balance as per the account type"])),
+"Fixed deposit":X(["Funds from a bank account to open the deposit","Nominee details","Form 15G/15H if you want to avoid TDS and are eligible"]),
+"Recurring deposit":X(["Linked savings account for monthly debits","Nominee details"]),
+"NRI account":["Passport with valid visa, residence permit, OCI or PIO card","Overseas address proof","Indian address proof, if any","PAN, or Form 60 if you have no PAN","Recent photo","Funds remitted from abroad (for NRE) or Indian income details (for NRO)"],
+"Minor account":["Child’s birth certificate or school ID","Guardian’s KYC: officially valid document and PAN","Guardian’s photo and the child’s photo","Guardian’s signature; the child’s signature if the child can sign"],
+"Senior-citizen account":X(["Age proof (if the ID does not show your date of birth)","Pension payment order, if applying for a pension account"]),
+"Basic banking account":X(["If you have no officially valid document, ask the bank about a “small account” (self-attested photo and signature or thumbprint)"]),
+"Home loan":X(INC.concat(["Form 16 or ITR (last 2–3 years)","Sale agreement or allotment letter","Title documents and approved building plan","Builder or seller NOC and payment receipts","Proof of your own contribution (down payment)"])),
+"Personal loan":X(INC),
+"Vehicle loan":X(INC.concat(["Dealer quotation or proforma invoice","Proof of down payment","Driving licence (also counts as KYC)"])),
+"Education loan":["Student KYC (officially valid document, PAN if held, photo)","Co-borrower KYC (usually a parent or guardian), income proof and bank statements","Admission letter and fee structure","Marks sheets and entrance exam score","Collateral documents if the loan is above the lender’s limit","For study abroad: passport, visa or offer letter and cost estimate"],
+"Gold loan":X(["The gold items you are pledging (you bring them to the lender)","Income proof is often not needed for small loans; ask the lender"]),
+"Loan against property":X(INC.concat(["Property title deeds and tax receipts","Property valuation report (arranged by the lender)","Existing loan statements, if any"])),
+"Loan against deposits or securities":X(["Fixed deposit receipt or demat holding statement","Pledge or lien form signed by you"]),
+"Business / MSME loan":X(BUS.concat(["ITR and financial statements for the last 2–3 years","Bank statements (last 6–12 months)","Details of the purpose, such as quotations or a project note"])),
+"Agricultural loan":X(["Land records (ownership or tenancy proof)","Crop and acreage details","Kisan Credit Card form, if applying for one","Passbook or income details"]),
+"Credit card":X(["Income proof (salary slips or ITR)","Recent bank statement, if asked"]),
+"Overdraft":X(INC.concat(["Collateral documents or fixed deposit details, if secured","Business documents, if a business overdraft"])),
+"UPI":ACC.concat(["A debit card or Aadhaar-based set-up, as your UPI app asks","No extra documents. Never share your UPI PIN or OTP with anyone"]),
+"QR payments":ACC.concat(["A UPI-enabled app","For merchants: business proof and a current or savings account"]),
+"NEFT":["Your account with net banking, or a branch form","Beneficiary name, account number and IFSC"],
+"RTGS":["Your account with net banking, or a branch form","Beneficiary name, account number and IFSC","Check the minimum amount for RTGS with your bank"],
+"IMPS":ACC.concat(["Beneficiary mobile and MMID, or account number and IFSC"]),
+"Debit card":["An existing account with the lender","Registered mobile number","Application through the app or branch; KYC is already on file for existing customers"],
+"Prepaid card":X(["Full KYC is needed for higher limits; minimum KYC may allow low limits"]),
+"Bill payments":ACC.concat(["Biller name and customer or consumer number"]),
+"Standing instructions":["Net banking or branch form","Payee account details, amount and frequency","Sufficient balance on each due date"],
+"Cheques":["An account with a cheque book","Payee name; keep the cheque in good condition"],
+"Demand drafts":["Application form","Payee name and amount","KYC, and PAN for larger cash payments","Account debit or cash payment as allowed"],
+"Merchant payment services":X(BUS.concat(["Current account","Shop photos or address proof, if the provider asks"])),
+"Internet and mobile banking":ACC.concat(["Debit card or branch form for first-time activation","Never share passwords, PINs or OTPs"]),
+"ATMs":["Debit card and PIN","Active account"],
+"Cash-deposit machines":["Debit card, or account number on machines that allow it","PAN for larger cash deposits as the law requires"],
+"Alerts and statements":ACC.concat(["Email address for e-statements"]),
+"Digital account opening":["Aadhaar number with the mobile number linked to it, for OTP-based e-KYC","PAN","Camera and good internet for video KYC, if the bank asks","Note: accounts opened only with OTP e-KYC can have lower limits until full KYC is done"],
+"Card controls":["The bank’s app or net banking","Registered mobile number"],
+"Passbook":["An account with a passbook facility","Branch visit or kiosk"],
+"Cheque book":["An account with a cheque facility","Request form or net banking request"],
+"Aadhaar-enabled services":["Aadhaar number linked (seeded) to your bank account","Biometric authentication at a micro-ATM or branch"],
+"Doorstep banking":["A registered mobile number","KYC and an account with the bank","Eligibility: usually older or differently-abled customers; ask your bank"],
+"Mutual funds":X(["Bank account details (cancelled cheque or statement)","Nominee details"]),
+"Government securities and bonds":X(["Demat account, or an RBI Retail Direct account","Bank account details"]),
+"Demat and trading":X(["Cancelled cheque or bank statement","Signature specimen","Income proof if you want derivatives trading","Nominee details"]),
+"NPS and pension":X(["Bank account details","Nominee details","Date of birth proof"]),
+"Bank-distributed insurance":X(["Age proof","Health or medical declaration","Income proof for higher cover","Nominee details"]),
+"Lockers":X(["Existing account or a new account with the bank","Address proof","Nominee details","Locker agreement signed by you"]),
+"Tax payments":["PAN or TAN","Challan details for the tax you are paying","Net banking or a branch"],
+"Business accounts":X(BUS),
+"Cash management":X(BUS.concat(["Current account","Service agreement with the bank"])),
+"Collections":X(BUS.concat(["Current account","List of payers and collection modes"])),
+"Trade finance":X(BUS.concat(["Import-Export Code (IEC)","Sale or purchase contracts and invoices","Letter of credit or bank guarantee application"])),
+"Foreign exchange":["Passport and visa or travel ticket","PAN","Purpose of remittance or travel","Form A2 under the Liberalised Remittance Scheme, where it applies"],
+"Remittances":X(["Beneficiary name, address and account details","Purpose of remittance","Form A2 for outward remittances, where it applies"]),
+"Payroll":BUS.concat(["Employee list with bank details","Salary file in the bank’s format","Authorised signatory details"]),
+"Bulk payments":BUS.concat(["Payment file in the bank’s format","Authorised signatory and maker-checker setup"]),
+"Equipment and project finance":X(BUS.concat(["Project report and cost estimate","Quotations or invoices for equipment","Financial statements for the last 2–3 years","Licences and approvals"])),
+"Treasury services":BUS.concat(["Board resolution","Dealing mandate and agreements with the bank","Recent financial statements"])};
+function docsList(p){return DOCS[p]||X(["Ask the lender for any extra documents for this product"])}
+function docsHtml(p){var h='<ul class="dlist" style="list-style:none;padding:0">';docsList(p).forEach(function(t){h+='<li style="margin:.35rem 0"><label class="ck" style="font-weight:400"><input type="checkbox"> <span>'+esc(t)+'</span></label></li>'});return h+'</ul>'}
+function docsNote(){return '<p class="muted">This is a typical list; each lender can ask for more or less. If you are already KYC-compliant with the same lender, you usually do not need to send KYC again (RBI FAQ). Never share your PIN, password, OTP or CVV with anyone.</p>'}
+function docsCard(p){return '<details class="card" open><summary><strong>Documents you may need</strong></summary>'+docsHtml(p)+docsNote()+'<a href="#docs" data-doc="'+esc(p)+'">Open a printable checklist</a></details>'}
+function docsRender(){var p=$("dp").value;$("dout").innerHTML='<div class="card"><h2>'+esc(p)+'</h2>'+docsHtml(p)+docsNote()+'</div>'}
+function buildDocs(){var s=$("dp"),h="";for(var c in CATS){h+='<optgroup label="'+esc(c)+'">';CATS[c].forEach(function(x){h+='<option>'+esc(x)+'</option>'});h+='</optgroup>'}s.innerHTML=h;s.onchange=docsRender;$("dprint").onclick=function(){window.print()};$("out").addEventListener("click",function(e){var a=e.target.closest("[data-doc]");if(a)window.pendingDoc=a.getAttribute("data-doc")});docsRender()}
+var DEP=["Fixed deposit","Recurring deposit","Savings account"],LOAN=["Home loan","Personal loan","Gold loan","Education loan","Vehicle loan"],SEL=[],TN={PSU:"Public sector bank",Pvt:"Private bank",SFB:"Small finance bank",NBFC:"NBFC"};
+function num(s,dep){var r=/(\d+(?:\.\d+)?)\s*%/g,m,a=[];while((m=r.exec(s||""))){a.push(parseFloat(m[1]))}if(!a.length)return null;return dep?Math.max.apply(0,a):Math.min.apply(0,a)}
+function picks(p){var D=DATA[p]||{},dep=DEP.indexOf(p)>-1;if(!dep&&LOAN.indexOf(p)<0)return[];var a=[];BANKS.forEach(function(b){var d=D[b[0]],v=d?num(d[0],dep):null;if(v!==null)a.push({n:b[0],t:b[1],v:v})});a.sort(function(x,y){return dep?y.v-x.v:x.v-y.v});return a.slice(0,3)}
+function pk(p){var k=picks(p);if(!k.length)return "Figures are available for "+Object.keys(DATA[p]).length+" lenders. Check fees, eligibility and terms too.";return (DEP.indexOf(p)>-1?"Highest":"Lowest")+" reported figures: "+k.map(function(x){return esc(x.n)+" ("+x.v.toFixed(2)+"%)"}).join(", ")+". Rate is not the only factor; also check fees, eligibility and terms."}
+function lenders(p){var t=$("bt").value,D=DATA[p]||{},all=$("sa").checked||!DATA[p],dep=DEP.indexOf(p)>-1,ln=LOAN.indexOf(p)>-1;
+var l=BANKS.filter(function(b){return(t==="all"||b[1]===t)&&(all||D[b[0]])}).map(function(b){var d=D[b[0]]||null;return{n:b[0],t:b[1],u:b[2],d:d,v:d?num(d[0],dep):null}});
+var byRate=$("so").value==="rate"&&(dep||ln);
+l.sort(function(a,b){if(!a.d!==!b.d)return a.d?-1:1;if(byRate&&a.v!==b.v){if(a.v===null)return 1;if(b.v===null)return -1;return dep?b.v-a.v:a.v-b.v}return a.n<b.n?-1:1});return l}
+function render(){
+var p=$("prod").value,L=lenders(p),dep=DEP.indexOf(p)>-1,k=picks(p),h='<h2>'+esc(p)+'</h2>';
+if(k.length){h+='<div class="card"><strong>'+(dep?'Highest':'Lowest')+' reported figures</strong><ol>';k.forEach(function(x){h+='<li>'+esc(x.n)+' — '+x.v.toFixed(2)+'% <span class="muted">('+TN[x.t]+')</span></li>'});h+='</ol><p class="muted">'+(dep?'Highest figure each lender reports; it may include senior-citizen rates. ':'Lowest starting figure each lender reports. ')+'This is not a recommendation: fees, eligibility and your own profile decide the real offer.</p></div>'}
+else if(!DATA[p])h+='<div class="note">We have no verified figures for this product yet. Lenders are listed with links to their official websites.</div>';
+if(dep)h+='<div class="note">Bank deposits are covered by DICGC insurance up to a limit (₹5 lakh per depositor per bank when we last checked; confirm the current limit). NBFC deposits are not covered, so check the credit rating.</div>';
+h+='<p class="muted">Showing '+L.length+' lenders. Tick up to 4 to compare side by side.</p>';
+L.forEach(function(x){h+='<div class="lc"><div class="lh"><label class="ck"><input type="checkbox" data-n="'+esc(x.n)+'"'+(SEL.indexOf(x.n)>-1?' checked':'')+'><strong>'+esc(x.n)+'</strong></label><span class="bd">'+TN[x.t]+'</span></div>';
+if(x.d){h+='<dl>';ROWS.forEach(function(r,ri){if(x.d[ri])h+='<dt>'+r+'</dt><dd>'+esc(x.d[ri])+'</dd>'});h+='</dl>'}else h+='<p class="un">Not verified for this product.</p>';
+h+='<a href="'+x.u+'" target="_blank" rel="noopener noreferrer">Official website</a></div>'});
+h+=docsCard(p);h+='<details class="card"><summary>What to do next</summary><ol><li>Shortlist two or three lenders.</li><li>Open each official website and find this product.</li><li>Check fees, eligibility and documents needed.</li><li>Confirm the current rate with the lender before you apply.</li></ol></details>';
+$("out").innerHTML=h;
+[].forEach.call($("out").querySelectorAll("input[data-n]"),function(c){c.onchange=function(){var n=c.getAttribute("data-n"),i=SEL.indexOf(n);if(c.checked){if(SEL.length>=4){c.checked=false;$("msg").textContent="You can compare up to 4 lenders.";return}SEL.push(n);$("msg").textContent=""}else if(i>-1)SEL.splice(i,1);renderTable(SEL)}});
+renderTable(SEL)}
+function buildHome(){
+var T=[["Save money safely","Fixed deposit"],["Save a little each month","Recurring deposit"],["Open an account","Savings account"],["Buy a home","Home loan"],["Need cash quickly","Personal loan"],["Borrow against gold","Gold loan"],["Pay for studies","Education loan"],["Buy a car","Vehicle loan"],["Pay with UPI","UPI"],["Get a credit card","Credit card"]];
+var h="";T.forEach(function(t){h+='<button class="tile" data-p="'+esc(t[1])+'"><strong>'+t[0]+'</strong><small>'+t[1]+'</small></button>'});
+$("tiles").innerHTML=h;$("tiles").onclick=function(e){var b=e.target.closest(".tile");if(!b)return;window.pendingPick=b.getAttribute("data-p");location.hash="#compare"};
+["so","sa"].forEach(function(i){$(i).addEventListener("change",render)});buildDocs()}
+function buildLenders(){
+var G=[["PSU","Public sector banks (12 of 12 listed)"],["Pvt","Private sector banks (21 of 21 listed)"],["SFB","Small finance banks (11 of 11 listed)"],["NBFC","NBFCs and housing finance companies (selected)"]];
+var h='<div class="note">Banks come from RBI’s list of scheduled commercial banks. Links open each lender’s homepage. If one does not load, use RBI’s list below.</div>';
+G.forEach(function(g){h+='<div class="card"><h2>'+g[1]+'</h2><ul>';BANKS.filter(function(b){return b[1]===g[0]}).sort(function(a,b){return a[0]<b[0]?-1:1}).forEach(function(b){h+='<li><a href="'+b[2]+'" target="_blank" rel="noopener noreferrer">'+esc(b[0])+'</a></li>'});h+='</ul></div>'});
+h+='<div class="card"><h2>Not listed individually</h2><p>Foreign banks (about 44), regional rural banks (about 28), payments banks and co-operative banks are also RBI-regulated but have no figures here yet. Counts come from a third-party summary of RBI’s list. See RBI’s <a href="https://www.rbi.org.in/scripts/bs_viewcontent.aspx?Id=3657" target="_blank" rel="noopener noreferrer">list of scheduled commercial banks</a> for the current list.</p><p class="muted">NBFCs are regulated by RBI but are not banks. Their deposits are not covered by DICGC insurance.</p></div>';
+$("lenlist").innerHTML=h}
+var $=function(i){return document.getElementById(i)};
+var cat=null,store=null;
+try{store=window.localStorage}catch(e){}
+function allProducts(){var a=[];for(var c in CATS)CATS[c].forEach(function(p){a.push([c,p])});return a}
+function fillProd(){
+var q=$("q").value.toLowerCase(),s=$("prod"),keep=s.value;s.innerHTML="";
+allProducts().filter(function(x){return(!cat||x[0]===cat)&&(!q||x[1].toLowerCase().indexOf(q)>-1||x[0].toLowerCase().indexOf(q)>-1)}).forEach(function(x){var o=document.createElement("option");o.textContent=x[1];o.value=x[1];s.appendChild(o)});
+if(!s.options.length){var o=document.createElement("option");o.textContent="No match — clear search";s.appendChild(o)}
+else if(keep)s.value=keep;
+render()}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function renderTable(names){
+if(names.length<2){$("cmp").innerHTML=names.length?'<p class="muted">Tick one more lender to compare side by side.</p>':"";return}
+var t="all",p=$("prod").value;
+var bs=BANKS.filter(function(b){return names.indexOf(b[0])>-1});
+var h='<h2>'+esc(p)+'</h2><div class="scroll"><table><caption class="muted" style="text-align:left;padding:.4rem 0">'+bs.length+' banks · filters: '+esc($("loc").value)+', '+esc($("el").value)+'</caption><thead><tr><th scope="col">Detail</th>';
+bs.forEach(function(b){h+='<th scope="col">'+esc(b[0])+'<br><span class="muted">'+(b[1]==="PSU"?"Public sector":"Private sector")+'</span></th>'});
+h+='</tr></thead><tbody>';
+var D=DATA[p]||{};
+ROWS.forEach(function(r,ri){h+='<tr><th scope="row">'+r+'</th>';bs.forEach(function(b){var v=D[b[0]]&&D[b[0]][ri];h+=v?'<td>'+esc(v)+'</td>':'<td class="un">Not verified</td>'});h+='</tr>'});
+h+='<tr><th scope="row">Official site</th>';
+bs.forEach(function(b){h+='<td><a href="'+b[2]+'" target="_blank" rel="noopener noreferrer">Bank website</a></td>'});
+h+='</tr></tbody></table></div><p class="muted">Links go to each bank’s main site. Look for “'+esc(p)+'” there and confirm current terms.</p>';
+if(SRC[p]){h+='<p><strong>Data sources:</strong> ';SRC[p].forEach(function(s,i){h+=(i?', ':'')+'<a href="'+s[1]+'" target="_blank" rel="noopener noreferrer">'+esc(s[0])+'</a>'});h+='. These are third-party sites that summarise bank rates, not the banks themselves. Where sources disagree, we show the range.</p>'}
+$("cmp").innerHTML=h}
+function init(){
+var c=$("cats"),b=document.createElement("button");b.className="chip";b.textContent="All";b.setAttribute("aria-pressed","true");c.appendChild(b);
+Object.keys(CATS).forEach(function(k){var x=document.createElement("button");x.className="chip";x.textContent=k;x.setAttribute("aria-pressed","false");c.appendChild(x)});
+c.addEventListener("click",function(e){var t=e.target.closest(".chip");if(!t)return;[].forEach.call(c.children,function(n){n.setAttribute("aria-pressed","false")});t.setAttribute("aria-pressed","true");cat=t.textContent==="All"?null:t.textContent;fillProd()});
+["q"].forEach(function(i){$(i).addEventListener("input",fillProd)});
+["prod","bt","loc","el"].forEach(function(i){$(i).addEventListener("change",render)});
+$("print").onclick=function(){window.print()};
+$("save").onclick=function(){var m=$("msg");try{store.setItem("bc-saved",JSON.stringify({p:$("prod").value,t:$("bt").value,l:$("loc").value,e:$("el").value}));m.textContent="Saved in this browser."}catch(e){m.textContent="Saving is not available here."}};
+$("share").onclick=function(){var txt="Bank comparison: "+$("prod").value+" ("+$("bt").options[$("bt").selectedIndex].text+")",m=$("msg");
+if(navigator.share){navigator.share({title:"Bank Compare India",text:txt}).catch(function(){})}
+else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){m.textContent="Copied to clipboard."},function(){m.textContent="Copy not available."})}
+else m.textContent="Sharing is not available here."};
+buildHome();buildLenders();fillProd();route()}
+/* Quiz */
+var GOALS=["An account","A deposit","A loan","A card","A payment service","An investment","Insurance","A business service","I’m not sure"];
+var STEPS=[
+{k:"goal",q:"What are you looking for?",o:GOALS},
+{k:"use",q:"Who is this for?",o:["Personal","Family","Farming","Business","I’m not sure"]},
+{k:"loc",q:"Where do you need banking access?",o:["City","Town","Village","Online only","I’m not sure"],why:"Used only to prefer banks with branches or ATMs near you. We do not ask for your address."},
+{k:"amt",q:"What amount or balance are you considering?",o:["Under ₹50,000","₹50,000 – ₹5 lakh","₹5 lakh – ₹50 lakh","Above ₹50 lakh","I’m not sure"],why:"Used to separate everyday products from larger ones. A range is enough."},
+{k:"time",q:"How long can you set the money aside, or repay over?",o:["Under 1 year","1–5 years","5+ years","Flexible","I’m not sure"]},
+{k:"freq",q:"How often will you use it?",o:["Daily","Weekly","Occasionally","I’m not sure"]},
+{k:"pri",q:"What matters most?",o:["Low fees","Higher returns","Flexible access","Branch access","Digital convenience","Specific features","I’m not sure"]},
+{k:"share",q:"Is it OK to use these answers to match eligibility conditions?",o:["Yes","No, show general options","I’m not sure"],why:"We only compare your answers with published eligibility rules. Nothing is stored or sent."}];
+var ans={},si=0;
+function qz(){
+var b=$("qbox");
+if(si>=STEPS.length){return result()}
+var s=STEPS[si];
+if(si>0&&ans.goal&&ans.goal.indexOf("loan")<0&&s.k==="time"&&0){}
+var h='<progress max="'+STEPS.length+'" value="'+si+'" aria-label="Quiz progress"></progress><p class="muted">Question '+(si+1)+' of '+STEPS.length+'</p><h2 id="qh" tabindex="-1">'+s.q+'</h2>';
+if(s.why)h+='<p class="muted">Why we ask: '+s.why+'</p>';
+h+='<div class="opts" role="group" aria-labelledby="qh">';
+s.o.forEach(function(o){h+='<button data-o="'+esc(o)+'"'+(ans[s.k]===o?' aria-pressed="true"':'')+'>'+esc(o)+'</button>'});
+h+='</div><div class="row">'+(si>0?'<button class="o" id="bk">Back</button>':'')+'<button class="o" id="sk">Skip</button><button class="o" id="cl">Clear answers</button></div>';
+b.innerHTML=h;$("qh").focus();
+b.querySelector(".opts").onclick=function(e){var t=e.target.closest("button");if(!t)return;ans[s.k]=t.getAttribute("data-o");si++;qz()};
+$("sk").onclick=function(){si++;qz()};
+$("cl").onclick=function(){ans={};si=0;qz()};
+if($("bk"))$("bk").onclick=function(){si--;qz()}}
+var TYPES={"An account":["Savings account","Salary account","Basic banking account"],"A deposit":["Fixed deposit","Recurring deposit"],"A loan":["Personal loan","Home loan","Vehicle loan","Education loan","Gold loan"],"A card":["Credit card","Debit card","Prepaid card"],"A payment service":["UPI","IMPS","NEFT"],"An investment":["Mutual funds","Government securities and bonds","NPS and pension"],"Insurance":["Bank-distributed insurance"],"A business service":["Business accounts","Business / MSME loan","Cash management"]};
+function result(){
+var t=TYPES[ans.goal]||["Savings account","Fixed deposit","Personal loan"],h='<h2>Product types that may suit you</h2><div class="note">General information only — not personal advice, and not a promise of approval. Bank offers are not ranked because rate data comes from third-party snapshots that sometimes disagree. Confirm current terms with the bank.</div>';
+if(!ans.goal||ans.goal==="I’m not sure")h+='<p>You were not sure what you need, so these are common starting points.</p>';
+t.forEach(function(p){
+var why=[];if(ans.goal&&TYPES[ans.goal])why.push("you chose “"+ans.goal+"”");if(ans.use&&ans.use!=="I’m not sure")why.push("it is for "+ans.use.toLowerCase()+" use");if(ans.pri&&ans.pri!=="I’m not sure")why.push("you value "+ans.pri.toLowerCase());
+h+='<div class="card"><h3>'+esc(p)+'</h3><p><strong>Why this showed up:</strong> '+(why.length?why.join(", "):"no answers were given, so this is a general option")+'.</p><p><strong>Trade-offs and eligibility:</strong> '+(DATA[p]?pk(p):'<span class="un">Not verified — compare banks below.</span>')+'</p><a class="btn o" href="#compare" data-pick="'+esc(p)+'">Compare banks</a> <a class="btn o" href="#docs" data-doc="'+esc(p)+'">Documents</a></div>'});
+h+='<div class="row"><button id="adj">Adjust answers</button><button class="o" id="nw">Start new quiz</button></div>';
+$("qbox").innerHTML=h;
+$("adj").onclick=function(){si=0;qz()};
+$("nw").onclick=function(){ans={};si=0;qz()};
+$("qbox").onclick=function(e){var a=e.target.closest("[data-pick]");if(a){window.pendingPick=a.getAttribute("data-pick")}var c=e.target.closest("[data-doc]");if(c)window.pendingDoc=c.getAttribute("data-doc")}}
+/* Router */
+function route(){
+var V=["home","compare","quiz","lenders","docs","data"];var v=(location.hash||"#home").slice(1);if(V.indexOf(v)<0)v="home";
+V.forEach(function(n){$("v-"+n).classList.toggle("hide",n!==v)});window.scrollTo(0,0);if(v==="docs"){if(window.pendingDoc){$("dp").value=window.pendingDoc;window.pendingDoc=null}docsRender()}
+[].forEach.call(document.querySelectorAll("nav a"),function(a){a.getAttribute("data-v")===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+if(v==="quiz")qz();
+if(v==="compare"&&window.pendingPick){cat=null;$("q").value="";fillProd();$("prod").value=window.pendingPick;window.pendingPick=null;render()}}
+window.addEventListener("hashchange",route);
+init();
+</script>
+</body>
+</html>
